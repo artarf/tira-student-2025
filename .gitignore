@@ -1,0 +1,13 @@
+target/
+*.class
+*.json
+.DS_Store
+xcuserdata/
+.build/
+.swiftpm/
+.vscode/
+*.tsv
+*.csv
+*.txt
+*.jar
+

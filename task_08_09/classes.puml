@@ -1,0 +1,100 @@
+@startuml
+skinparam groupInheritance 1
+package oy.interact.tira.task_8 {
+  package shared <<Node>> {
+    interface Dictionary {
+      V add(K, V)
+      V get(K)
+    }
+    interface Tree {
+      V add(K, V)
+      V get(K)
+    }
+    class BinarySearchTree
+    Tree <|.. BinarySearchTree
+    note bottom
+      The implementations of BST and Hash table are in the shared package
+    end note
+    class HashTableDictionary
+    Dictionary <|.. HashTableDictionary
+  }
+  interface Book {
+    +void setSource(String fileName, String ignoreWordsFile)
+    +void countUniqueWords()
+    +void report()
+    +void close()
+    __Methods for testing__
+    +int getUniqueWordCount()
+    +int getTotalWordCount()
+    +String getWordInListAt(int position)
+    +int getWordCountInListAt(int position)
+    +int getWordCountForWord(String word)
+  }
+  abstract class BookBase #pink;line:red {
+    {abstract} void createDataStructure()
+    {abstract} void insert(final String word)
+    {abstract} int getWordCount(final String word)
+    {abstract} int uniqueWordCount()
+    {abstract} Pair [] getAllWordCounts()
+    {abstract} void resetDataStructure()
+  }
+  Book <|.. BookBase
+  class BookFactory #pink;line:red {
+    +{static} Book createBSTBook()
+    +{static} Book createHashTableBook()
+  }
+  class BSTBookImplementation #pink;line:red
+  class HashTableBookImplementation #pink;line:red
+  BookBase <|.. BSTBookImplementation
+  BookBase <|.. HashTableBookImplementation
+  note bottom of BSTBookImplementation
+    You will implement a BST and Hash table based book implementations
+    as part of the tasks 8 and 9,
+    to count occurrences of unique words in book files.
+  end note
+  HashTableBookImplementation ..> HashTableDictionary
+  BSTBookImplementation ..> BinarySearchTree
+  class CorrectnessTests
+  class PerformanceTests
+  CorrectnessTests ..> BookBase : tests
+  PerformanceTests ..> BookBase : tests
+  BookFactory ..> Book : instantiates
+  class BooksAndWordsApp {
+    +{static} void main(String[] args)
+  }
+  note top of BooksAndWordsApp
+    Application class you can use to run the app 
+    from the command line.
+  end note
+  BooksAndWordsApp ..> Book : calls
+  BooksAndWordsApp ..> BookFactory : uses
+  package Files <<Folder>> {
+    entity "several book files" <<file>>
+    entity "ignore words file" <<file>>
+  }
+  BookBase ..> Files : reads
+  package gui {
+    class BooksAndWordsGUI {
+      +{static}void main(String[] args)
+    }
+    BooksAndWordsGUI ..|> Book
+    BooksAndWordsGUI ..> Book : calls
+    BooksAndWordsGUI ..> BookFactory : uses
+    class ControlPanel {
+      +actionPerformed(ActionEvent e) 
+    }
+    class ResultsPanel {
+      +void drawWordsWithBars()
+    }
+    ControlPanel --|> javax.swing.JPanel
+    ResultsPanel --|> javax.swing.JPanel
+     BooksAndWordsGUI *-- ControlPanel
+     BooksAndWordsGUI *-- ResultsPanel
+  }
+  note top of gui 
+    Java Swing GUI application you can use to
+    run the app in a GUI window.
+  end note
+}
+
+@enduml

@@ -1,0 +1,21 @@
+<document>
+	<heading>
+		<subject>Oulu Customers</subject>
+		<description>Customers from Oulu city area</description>
+		<generated>2025-06-18 13.39 EET</generated>
+	</heading>
+	<persons>
+		<person>
+			<firstname>Antti</firstname>
+			<middlename>Odysseu</middlename>
+			<lastname>Juustila</lastname>
+			<age>42</age>
+		</person>
+		<person>
+			<firstname>Jouni</firstname>
+			<middlename>Hector</middlename>
+			<lastname>Lappalainen</lastname>
+			<age>41</age>
+		</person>
+	</persons>
+</document>
