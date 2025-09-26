@@ -18,12 +18,16 @@ class ArrayReversals {
 	 * @return Returns a new array where the elements of the input array are in reversed order.
 	 */	
 	static Integer [] reversed(Integer [] input) {
+		preCondition(input);
 		Integer [] output = new Integer[input.length];
 		int index = 0;
 		int addIndex = input.length - 1;
-		for (/*empty*/; index < input.length - 1; index++) {
-			output[index] = Integer.valueOf(input[index]);
+		for (/*empty*/; index < input.length; index++) {
+			output[addIndex] = Integer.valueOf(input[index]);
+			assert input[index].equals(output[addIndex]) : addIndex;
+			addIndex--;
 		}
+		postCondition(input, output);
 		return output;
 	}
 
@@ -36,4 +40,26 @@ class ArrayReversals {
 		return newArray;
 	}
 
+	private static void preCondition(Integer [] array) {
+		if (array == null) {
+			throw new IllegalArgumentException("[ArrayReversals] Array is null");
+		}
+
+		if (array.length < 2) {
+			throw new IllegalArgumentException("[ArrayReversals] Array length must be more than 1");
+		}
+
+		for (final Integer x : array) {
+			if (x == null) {
+				throw new IllegalArgumentException("[ArrayReversals] Array contains a null");
+			}
+		}
+	}
+
+	static void postCondition(final Integer [] input, final Integer [] output) {
+		assert input.length == output.length : "[ArrayReversals] Arrays are not the same size";
+		for (int i = 0; i < input.length; i++) {
+			assert input[i].equals(output[input.length - 1 - i]) : "[ArrayReversals] Arrays are not reversed";
+		}
+	}
 }

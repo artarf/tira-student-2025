@@ -88,7 +88,7 @@ public class CustomDate {
 	 * @throws IllegalStateException if the date is invalid after setting the month.
 	 */
 	public void setMonth(final int mm) throws IllegalArgumentException, IllegalStateException  {
-		if (mm < 1 || mm > 12) {
+		if (mm < 1 || mm > 12 || day > CustomDate.daysInMonth(mm, year)) {
 			throw new IllegalArgumentException("No such month");
 		}
 		this.month = mm;
@@ -112,7 +112,10 @@ public class CustomDate {
 	 * @throws IllegalStateException if the date is invalid after setting the year.
 	 */
 
-	public void setYear(final int yy) {
+	public void setYear(final int yy) throws IllegalArgumentException, IllegalStateException {
+		if (day > CustomDate.daysInMonth(month, yy)) {
+			throw new IllegalArgumentException("No such date in year");
+		}
 		this.year = yy;
 		invariant();
 	}
@@ -134,6 +137,10 @@ public class CustomDate {
 					toAdd -= remainingDays + 1;
 					day = 1;
 					month += 1;
+					if (month == 13) {
+						month = 1;
+						year += 1;
+					}
 				} else {
 					day += toAdd;
 					toAdd = 0;
@@ -167,7 +174,14 @@ public class CustomDate {
 	}
 
 	private void invariant() {
-		
+		var correct_days = daysInMonth(month, year);
+		if (day > correct_days || day < 1) {
+			throw new IllegalStateException("[CustomDate] Invalid number of days");
+		}
+
+		if (correct_days == -1) {
+			throw new IllegalStateException("[CustomDate] Invalid month");
+		}
 	}
 	
 }
