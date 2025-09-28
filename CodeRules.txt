@@ -1,0 +1,78 @@
+[allowedImports]
+*,import java.util.Comparator
+*,import java.util.function.Predicate
+*,import oy.interact.tira.
+*,import java.lang.Math;
+*,import static java.lang.Math.;
+*,import java.util.concurrent.atomic.AtomicInteger;
+*,import java.util.NoSuchElementException
+*,import java.io.IOException
+*,import java.util.concurrent.ThreadLocalRandom
+ArrayUtils,import java.lang.reflect.Array;
+ArrayUtils,import java.util.Random;
+ArrayUtils,import java.util.concurrent.ThreadLocalRandom;
+ArrayUtils,import java.util.function.BiPredicate;
+PersonXMLToMarkdownHandler,import org.xml.sax.
+PersonXMLToMarkdownHandler,import java.util.Date
+Person,import java.util.UUID
+SortApp,import java.io.
+Graph,import java.util.
+StoreQueuesApp,import java.awt.
+StoreQueuesApp,import javax.swing.
+WormGamePanel,import java.awt.
+WormGamePanel,import javax.swing.
+WormGamePanel,import java.util.Timer
+WormGamePanel,import java.util.concurrent.
+Shapes,import java.util.Timer
+Shapes,import java.awt.
+BookBase,import java.io.
+BookBase,import java.nio.
+BookBase,import java.util.Locale
+
+[ignoreImportCheckForFiles]
+GameViewConstants,Ellipse,Shape,ResultsPanel,WordFilter,ShapeApp,Triangle,Rectangle,ShapeFactory,ShopListener,ParsingApp,QueuePanel,WormGameApp,BooksAndWordsApp,MazePanel,MazeApp,ControlPanel,Maze,LittleChocolateShop,BooksAndWordsGUI
+
+[codeRules]
+ArrayReversals.reversed,must,assert
+CustomDate.invariant,must,throw
+SortAndSearchApp.doYourSearch,must,Comparator
+Shapes.removeNotSelected4,must,Partition.filter
+SortApp.countByInsertionSorting,must,SimpleSort.insertionSort
+SortApp.countByFastSorting,must,FastSort.sort
+SortApp.countByFiltering,must,ArrayUtils.findEdgeValue
+SortApp.countByFiltering,must,Partition.filter
+StackImplementation.toString,must,StringBuilder
+StackImplementation.capacity,must,.length
+StackImplementation.clear,mustnot,for
+StackImplementation.clear,mustnot,while
+StackImplementation.push,mustnot,catch
+StackImplementation.size,mustnot,for
+PersonXMLToMarkdownHandler.startDocument,must,stack.clear()
+PersonXMLToMarkdownHandler.startElement,must,stack.push
+PersonXMLToMarkdownHandler.endElement,must,stack.pop()
+ArrayQueue.enqueue,mustnot,catch
+ArrayQueue.toString,must,StringBuilder
+ArrayQueue.capacity,must,.length
+ArrayQueue.clear,mustnot,for
+LittleChocolateShop.prepareQueues,must,ArrayQueueFactory.createIntegerQueue
+LittleChocolateShop.newCustomerEntered,must,enqueue(ticketNumber)
+WormGamePanel.initializeSnake,must,ListFactory.createPointLinkedList
+LinkedListImplementation.toString,must,StringBuilder
+FastSort.sort,mustnot,Arrays.sort
+BinSearch.searchRecursively,must,searchRecursively
+BinSearch.searchRecursively,mustnot,while
+BinSearch.searchRecursively,mustnot,for
+Partition.byRule,must,rule.test
+Partition.byRule,mustnot,new T[
+Partition.byRule,mustnot,ArrayUtils.copyOf
+Partition.filter,must,byRule
+Person.hashCode,mustnot,id.hashCode()
+HashTableDictionary.add,must,key.hashCode()
+HashTableDictionary.get,must,key.hashCode()
+HashTableDictionary.clear,mustnot,for
+HashTableDictionary.clear,mustnot,while
+BookBase.countUniqueWords,must,Character.isLetter
+BookBase.countUniqueWords,must,insert
+BookBase.report,must,FastSort
+BSTBookImplementation.createDataStructure,must,BSTFactory.createStringIntegerBST
+HashTableBookImplementation.createDataStructure,must,HashTableFactory.createHashTable
