@@ -9,4 +9,7 @@ xcuserdata/
 *.tsv
 *.csv
 *.jar
-
+/task_08_09/testfiles/
+/preflight_artifacts/
+/snapshot.sh
+/test.sh

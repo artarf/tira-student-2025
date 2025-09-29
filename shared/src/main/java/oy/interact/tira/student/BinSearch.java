@@ -17,7 +17,7 @@ public class BinSearch {
     * value or -1 if one cannot be found.
     *
     * The array to search, must not be null, nor contain null elements in
-    * between fromIndex...toIndex, inclusive. 
+    * between fromIndex...toIndex, inclusive.
     *
     * Array must be sorted in natural order, based on T.compareTo.
     *
@@ -42,7 +42,7 @@ public class BinSearch {
     * value or -1 if one cannot be found.
     *
     * The array to search, must not be null, nor contain null elements in
-    * between fromIndex...toIndex, inclusive. 
+    * between fromIndex...toIndex, inclusive.
     *
     * Array must be sorted in the same order than the Comparator specifies.
     *

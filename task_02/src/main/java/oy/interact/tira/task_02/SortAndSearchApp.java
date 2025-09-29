@@ -23,7 +23,7 @@ public class SortAndSearchApp {
 
     public static void main( String[] args ) {
         doPerformanceTest();
-        doYourSearch();        
+        doYourSearch();
     }
 
     private static void doPerformanceTest() {
@@ -44,7 +44,7 @@ public class SortAndSearchApp {
 
             for (int count = STARTING_COUNT; count <= END_COUNT; count += INCREASED_BY_COUNT) {
                 Person [] persons = PersonUtils.createPersons(count);
-	
+
                 int searchCounter = SEARCHES_PER_LOOP;
                 long start = System.nanoTime();
                 while (searchCounter-- > 0) {
@@ -81,12 +81,12 @@ public class SortAndSearchApp {
     private static void doYourSearch() {
         /*
         try {
-            
-            Person [] persons = PersonUtils.createPersons(100);            
+
+            Person [] persons = PersonUtils.createPersons(100);
 
             // TODO: create a comparator comparing person ages.
             // Simplest way to do that is to use Comparator.comparingInt...
-            
+
 
             // Then sort using that comparator...
             SimpleSort.insertionSort(persons, comparator);
@@ -100,7 +100,7 @@ public class SortAndSearchApp {
             int ageToFind = 42;
 
             // Person toSearch = WHAT SHOULD BE HERE...?
-            
+
             // First try to find with linear search:
             int index = LinearSearchArray.search(toSearch, persons, 0, persons.length, comparator);
             if (index >= 0) {
@@ -108,7 +108,7 @@ public class SortAndSearchApp {
             } else {
                 System.out.format("Unfortunately there is no one with age %d in data%n", ageToFind);
             }
-                
+
             // Then find with binary search:
             index = BinSearch.searchRecursively(toSearch, persons, 0, persons.length - 1, comparator);
             if (index >= 0) {

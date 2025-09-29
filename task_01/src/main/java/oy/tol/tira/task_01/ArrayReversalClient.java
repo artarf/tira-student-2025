@@ -1,6 +1,6 @@
 package oy.tol.tira.task_01;
 
-class ArrayReversalClient {
+public class ArrayReversalClient {
 
 	public static void main(String [] args) {
 		System.out.println("Testing ArrayReversals.reversed()");
@@ -15,7 +15,7 @@ class ArrayReversalClient {
 		testNullArrayReversed();
 		testEmptyArrayReversed();
 		testReversedEvenNumberOfElements();
-		testReversedOddNumberOfElements();		
+		testReversedOddNumberOfElements();
 	}
 
 	static void testNullArrayReversed() {
