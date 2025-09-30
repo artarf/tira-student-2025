@@ -143,7 +143,11 @@ public class Person implements Comparable<Person> {
 	 */
 	@Override
 	public boolean equals(Object another) {
-		return false;
+		if (this == another) return true;
+		if (!(another instanceof Person)) return false;
+		Person p = (Person) another;
+		// Identiteetti määräytyy id:n mukaan
+		return this.id != null && this.id.equals(p.id);
 	}
 
 	// STUDENTS TODO implement compareTo
@@ -165,7 +169,12 @@ public class Person implements Comparable<Person> {
 	 */
 	@Override
 	public int compareTo(Person another) {
-		return Integer.MIN_VALUE;
+		// Luonnollinen järjestys: sukunimi → etunimi → toinen nimi
+		int c = this.lastName.compareTo(another.lastName);
+		if (c != 0) return c;
+		c = this.firstName.compareTo(another.firstName);
+		if (c != 0) return c;
+		return this.middleName.compareTo(another.middleName);
 	}
 
 	@Override
@@ -190,7 +199,18 @@ public class Person implements Comparable<Person> {
 	 */
 	@Override
 	public int hashCode() {
-		return 0;
+		if (id == null) return 0;
+		int h = 0x9E3779B9;              // siemen (32-bittinen kultaisen suhteen vakio)
+		for (int i = 0; i < id.length(); i++) {
+			int c = id.charAt(i);
+			// sekoita: pieni siirto + kertolasku + xor merkillä
+			h ^= c + (h << 6) + (h >>> 2);
+		}
+		// kevyt "avalanche" loppuun, jotta bitit leviäisivät
+		h ^= (h >>> 16);
+		h *= 0x85EBCA6B;
+		h ^= (h >>> 13);
+		return h; // saa olla negatiivinen
 	}
 
 }
